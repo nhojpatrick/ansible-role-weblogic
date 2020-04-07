@@ -183,3 +183,4 @@
         state: "started"
 
   become: True
+  when: node_manager.install
