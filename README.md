@@ -50,6 +50,8 @@ Role Variables
       - `web` - fetch artifact from custom web uri
       - `local` - local artifact
 
+    __A generic jar installer is avalaible for some releases like fmw_12.1.3.0.0_wls.jar. To use that installer, just wrap the jar into a zip and use that zip__
+
   - `transport_web` - URI for http/https artifact  e.g. "http://my-storage.example.com/V886423-01.zip"
   - `transport_local` - path for local artifact e.g. "/tmp/V886423-01.zip"
 
