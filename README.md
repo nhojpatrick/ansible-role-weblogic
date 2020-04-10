@@ -63,7 +63,7 @@ Role Variables
 
   - `wls_version` - Oracle WebLogic version
 
-#### Set WebLogic version as it's defined in official Oracle Documentation
+    __Set WebLogic version as it's defined in official Oracle Documentation__
 
   - `wls_path` - where WebLogic should be installed
     default: `/opt/weblogic`
