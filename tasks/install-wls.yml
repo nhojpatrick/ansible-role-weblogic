@@ -190,6 +190,20 @@
         mode: u=rwx,g=rx,o=
       when: wls_nodemanager_dir.stat.exists == False
 
+    - name: Check if WebLogic Node Manager file nodemanager.domains exists
+      stat:
+        path: "{{ wls_path }}/oracle_common/common/nodemanager/nodemanager.domains"
+      register: wls_nodemanager_domains_file
+
+    - name: Create WebLogic Node Manager file nodemanager.domains if needed
+      file:
+        path: "{{ wls_path }}/oracle_common/common/nodemanager/nodemanager.domains"
+        state: touch
+        owner: "{{ wls_user }}"
+        group: "{{ wls_group }}"
+        mode: u=rw,g=r,o=
+      when: wls_nodemanager_domains_file.stat.exists == False
+
     - name: "Start Node Manager"
       service:
         name: "{{ node_manager.service }}"
