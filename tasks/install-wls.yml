@@ -176,6 +176,20 @@
         daemon_reload: True
       when: ansible_facts.service_mgr == "systemd"
 
+    - name: Check if WebLogic Node Manager dir nodemanager exists
+      stat:
+        path: "{{ wls_path }}/oracle_common/common/nodemanager"
+      register: wls_nodemanager_dir
+
+    - name: Create WebLogic Node Manager dir nodemanager if needed
+      file:
+        path: "{{ wls_path }}/oracle_common/common/nodemanager"
+        state: directory
+        owner: "{{ wls_user }}"
+        group: "{{ wls_group }}"
+        mode: u=rwx,g=rx,o=
+      when: wls_nodemanager_dir.stat.exists == False
+
     - name: "Start Node Manager"
       service:
         name: "{{ node_manager.service }}"
